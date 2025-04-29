@@ -97,10 +97,17 @@ public class LoginTela extends javax.swing.JFrame {
         // TODO add your handling code here:
         String login = loginTextField.getText();
         String senha = new String(senhaPasswordField.getPassword());
-        if (login.equals("admin") && senha.equals("admin")){
-            JOptionPane.showMessageDialog(null, "Bem vindo");
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário inválido");            
+        
+        try {
+            Usuario usuario = new Usuario(login,senha);
+            DAO dao = new DAO();
+            if(dao.existe(usuario)) {
+                JOptionPane.showMessageDialog(null, "Bem vindo");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário inválido"); 
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Problemas técnicos. Tente novamente mais tarde");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
