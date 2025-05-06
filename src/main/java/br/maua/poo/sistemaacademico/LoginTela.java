@@ -31,16 +31,28 @@ public class LoginTela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         loginTextField = new javax.swing.JTextField();
         senhaPasswordField = new javax.swing.JPasswordField();
         sairButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        loginTextField.setBorder(javax.swing.BorderFactory.createTitledBorder("Digite seu login"));
+        loginTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
 
-        senhaPasswordField.setBorder(javax.swing.BorderFactory.createTitledBorder("Digite sua senha"));
+        senhaPasswordField.setBorder(javax.swing.BorderFactory.createTitledBorder(null));
 
         sairButton.setText("Sair");
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,7 +114,10 @@ public class LoginTela extends javax.swing.JFrame {
             Usuario usuario = new Usuario(login,senha);
             DAO dao = new DAO();
             if(dao.existe(usuario)) {
-                JOptionPane.showMessageDialog(null, "Bem vindo");
+                JOptionPane.showMessageDialog(null, "Bem vindo, " + usuario.getNome() + "!");
+                DashboardTela dt = new DashboardTela();
+                dt.setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Usuário inválido"); 
             }
@@ -147,6 +162,7 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
     private javax.swing.JTextField loginTextField;
     private javax.swing.JButton sairButton;
